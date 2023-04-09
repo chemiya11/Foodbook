@@ -163,7 +163,7 @@ const actualizarUsuario = async (req, res) => {
 
 
         if (foto == true) {
-            const path = "images/" + req.file.originalname;
+            const path = "src/images/" + req.file.originalname;
            // console.log(req.file.originalname)
 
 
