@@ -131,10 +131,10 @@ const crearPublicacion = async (req, res) => {
   
   
       const path="images/"+req.file.originalname;
-    
+    console.log(path)
         
         const newPath =  await cloudinary.uploads(path, 'Images');//llamo al cloudinary para que lo suba
-        //console.log("ruta cloudinary:"+newPath.url)//me devuelvo lo de cloudinaru
+        console.log("ruta cloudinary:"+newPath.url)//me devuelvo lo de cloudinaru
        
       
   
