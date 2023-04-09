@@ -105,7 +105,7 @@ const registro = async (req, res) => {
 
 
 
-    let sql = `insert into usuario(username,descripcion,password,email,rol,fotoRuta) values('${username}','Hola! Este mi perfil de FoodBook, aqui publico todas las recetas deliciosas que preparo y los beneficios que me han proporcionado muchos alimentos','${password}','${email}',"user","https://res.cloudinary.com/chemareact/image/upload/v1676929586/Images/generico_ox5yja.png")`
+    let sql = `insert into usuario(username,descripcion,password,email,rol,fotoRuta) values('${username}','Hola! Este mi perfil de FoodBook, aqui publico todas las recetas deliciosas que preparo y los beneficios que me han proporcionado muchos alimentos','${password}','${email}',"user","https://res.cloudinary.com/chemareact/image/upload/v1680472920/Images/usuario-generico_cr1cqm.png")`
     conexion.query(sql, (err, rows, fields) => {
         if (err) throw err;
         const user = (rows.insertId)
