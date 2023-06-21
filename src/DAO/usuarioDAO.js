@@ -1,7 +1,7 @@
 const uploadFile = require("../middleware/upload");
 const fs = require("fs");
 const cloudinary = require('../middleware/cloudinary')
-
+const baseUrl = "http://localhost:8080/files/";
 const {conexion} = require('../conexion/db')
 
 const jsonwebtoken = require('jsonwebtoken');
@@ -24,7 +24,6 @@ const Securitykey = Buffer.alloc(32, 'prueba clave', 'ascii');
 const initVector = Buffer.alloc(16, 'prueba clave', 'ascii');
 //console.log(Securitykey)
 //console.log(initVector)
-
 
 
 
@@ -105,7 +104,7 @@ const registro = async (req, res) => {
 
 
 
-    let sql = `insert into usuario(username,descripcion,password,email,rol,fotoRuta) values('${username}','Hola! Este mi perfil de FoodBook, aqui publico todas las recetas deliciosas que preparo y los beneficios que me han proporcionado muchos alimentos','${password}','${email}',"user","https://res.cloudinary.com/chemareact/image/upload/v1680472920/Images/usuario-generico_cr1cqm.png")`
+    let sql = `insert into usuario(username,descripcion,password,email,rol,fotoRuta) values('${username}','Hola! Este mi perfil de FoodBook, aquí publico todas las recetas deliciosas que preparo y los beneficios que me han proporcionado muchos alimentos','${password}','${email}',"user","https://res.cloudinary.com/chemareact/image/upload/v1680472920/Images/usuario-generico_cr1cqm.png")`
     conexion.query(sql, (err, rows, fields) => {
         if (err) throw err;
         const user = (rows.insertId)
@@ -163,14 +162,14 @@ const actualizarUsuario = async (req, res) => {
 
 
         if (foto == true) {
-            const path = "src/images/" + req.file.originalname;
-           // console.log(req.file.originalname)
+            const path = "images/" + req.file.originalname;
+            //console.log(req.file.originalname)
 
 
             newPath = await cloudinary.uploads(path, 'Images');//llamo al cloudinary para que lo suba
             //console.log("ruta cloudinary:"+newPath.url)//me devuelvo lo de cloudinaru
 
-           // console.log(newPath.url)
+            console.log(newPath.url)
 
             
         } 
@@ -224,7 +223,7 @@ const actualizarUsuario = async (req, res) => {
 
 
     } catch (err) {
-        //console.log(err);
+        console.log(err);
 
         if (err.code == "LIMIT_FILE_SIZE") {//error de tamano
             return res.status(500).send({

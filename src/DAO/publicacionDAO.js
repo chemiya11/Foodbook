@@ -1,6 +1,7 @@
 const uploadFile = require("../middleware/upload");
 const fs = require("fs");
 const cloudinary = require('../middleware/cloudinary')
+const baseUrl = "http://localhost:8080/files/";
 const {conexion} = require('../conexion/db')
 
 
@@ -130,30 +131,26 @@ const crearPublicacion = async (req, res) => {
   
   
   
-      const path="src/images/"+req.file.originalname;
-    console.log(path)
+      const path="images/"+req.file.originalname;
+    
         
         const newPath =  await cloudinary.uploads(path, 'Images');//llamo al cloudinary para que lo suba
-        console.log("ruta cloudinary:"+newPath.url)//me devuelvo lo de cloudinaru
+        //console.log("ruta cloudinary:"+newPath.url)//me devuelvo lo de cloudinaru
        
       
   
         const { titulo, descripcion, idCreador, idAlimento, idReceta } = req.body//cojo el body que m ellega y lo inserto y devuelvo texto
-     
- //const fechapublicacion = "2020-1-01 19:0:00"
- var fecha=new Date()
- var mes=(fecha.getMonth())+1
- var dia=(fecha.getDate())
- var agno=(fecha.getFullYear())
- var min=(fecha.getMinutes())
- var sec=(fecha.getSeconds())
- var hora=(fecha.getHours())
-
- var fechaPublicacionJunta=agno+"-"+mes+"-"+dia+" "+hora+":"+min+":"+sec
-
-
-
-
+      //const fechapublicacion = "2020-1-01 19:0:00"
+      var fecha=new Date()
+      var mes=(fecha.getMonth())+1
+      var dia=(fecha.getDate())
+      var agno=(fecha.getFullYear())
+      var min=(fecha.getMinutes())
+      var sec=(fecha.getSeconds())
+      var hora=(fecha.getHours())
+      
+      var fechaPublicacionJunta=agno+"-"+mes+"-"+dia+" "+hora+":"+min+":"+sec
+      
 
       let sql = "";
     
@@ -215,6 +212,7 @@ const crearPublicacion = async (req, res) => {
     })
 
 }
+
 
 
 module.exports={

@@ -1,6 +1,7 @@
 const uploadFile = require("../middleware/upload");
 const fs = require("fs");
 const cloudinary = require('../middleware/cloudinary')
+const baseUrl = "http://localhost:8080/files/";
 const {conexion} = require('../conexion/db')
 
 const buscarRecetas = async (req, res) => {
@@ -48,7 +49,7 @@ const crearReceta = async (req, res) => {
   
   
   
-      const path="src/images/"+req.file.originalname;
+      const path="images/"+req.file.originalname;
     
         
         const newPath =  await cloudinary.uploads(path, 'Images');//llamo al cloudinary para que lo suba

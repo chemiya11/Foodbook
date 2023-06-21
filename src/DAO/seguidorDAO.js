@@ -1,7 +1,7 @@
 const uploadFile = require("../middleware/upload");
 const fs = require("fs");
 const cloudinary = require('../middleware/cloudinary')
-
+const baseUrl = "http://localhost:8080/files/";
 const {conexion} = require('../conexion/db')
 
 const buscarNumeroSeguidos = async (req, res) => {

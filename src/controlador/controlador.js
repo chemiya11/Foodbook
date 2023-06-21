@@ -1,15 +1,13 @@
 
-const controllerUsuario = require("../controllers/usuario.controller");
-const controllerAlimento = require("../controllers/alimento.controller");
-const controllerReceta = require("../controllers/receta.controller");
-const controllerPublicacion = require("../controllers/publicacion.controller");
-const controllerSeguidor= require("../controllers/seguidor.controller");
-const controllerFavorita= require("../controllers/favorita.controller");
-const controllerAlimentoReceta= require("../controllers/alimento-receta.controller");
-const controllerPaso= require("../controllers/paso.controller");
-const controllerComentario= require("../controllers/comentario.controller");
-
-
+const controllerAlimento = require("../DAO/alimentoDAO");
+const controllerUsuario = require("../DAO/usuarioDAO");
+const controllerReceta = require("../DAO/recetaDAO");
+const controllerPublicacion = require("../DAO/publicacionDAO");
+const controllerSeguidor= require("../DAO/seguidorDAO");
+const controllerFavorita= require("../DAO/favoritaDAO");
+const controllerAlimentoReceta= require("../DAO/alimento-recetaDAO");
+const controllerPaso= require("../DAO/pasoDAO");
+const controllerComentario= require("../DAO/comentarioDAO");
 const router = require('express').Router()
 
 
@@ -33,6 +31,9 @@ router.get('/usuarios',controllerUsuario.buscarUsuarios);
 router.get('/usuarios/repetidos',controllerUsuario.comprobarRepetido);
 router.put("/usuarios/:id", controllerUsuario.actualizarUsuario);
 router.get('/usuarios/:id',controllerUsuario.buscarUsuarioPorId);
+
+
+
 
 /*************receta */
 
@@ -129,6 +130,107 @@ router.get('/recetas/:id/pasos', controllerPaso.buscarPasosReceta);
 router.get('/publicaciones/:id/comentarios', controllerComentario.buscarComentariosPublicacion);
 router.post('/publicaciones/:id/comentarios', controllerComentario.crearComentario);
 router.put('/publicaciones/:id/comentarios/:idComentario',controllerComentario.actualizarComentario);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
