@@ -22,7 +22,7 @@ const crearAlimento = async (req, res) => {
   
   
   
-      const path="images/"+req.file.originalname;
+      const path="src/images/"+req.file.originalname;
     
         
         const newPath =  await cloudinary.uploads(path, 'Images');//llamo al cloudinary para que lo suba
@@ -132,7 +132,7 @@ const actualizarAlimento = async (req, res) => {
 
 
       if (foto == true) {
-          const path = "images/" + req.file.originalname;
+          const path="src/images/"+req.file.originalname;
           console.log(req.file.originalname)
 
 
